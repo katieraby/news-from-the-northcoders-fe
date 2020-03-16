@@ -5,7 +5,7 @@ const Header = props => {
   return (
     <header>
       <h1>News from the Northcoders</h1>
-      <p>Logged in: {props.loggedInUser}</p>
+      <p className={styles.headerP}>Logged in: {props.loggedInUser}</p>
     </header>
   );
 };
