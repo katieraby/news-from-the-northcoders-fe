@@ -50,7 +50,7 @@ class Articles extends Component {
           {!this.props.topic ? "hello from all articles" : "hello from "}
           {this.props.topic}
         </h2>
-        {isLoaded && <ArticleList articleData={articleData} />}
+        {isLoaded ? <ArticleList articleData={articleData} /> : "loading..."}
       </div>
     );
   }
@@ -58,7 +58,9 @@ class Articles extends Component {
   fetchAllArticles = () => {
     api
       .fetchAllArticles(this.props.topic)
-      .then(({ data }) => this.setState({ articleData: data }));
+      .then(({ data }) =>
+        this.setState({ articleData: data.articles, isLoaded: true })
+      );
   };
 
   componentDidMount() {
