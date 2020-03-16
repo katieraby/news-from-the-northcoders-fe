@@ -1,6 +1,7 @@
 .articlesCard {
-  border: 2px solid green;
+  border: 2px solid var(--blue);
   padding: 10px;
   margin-bottom: 20px;
   width: 65%;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
 }

@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./ArticleCard.module.css";
+import { Link } from "@reach/router";
 
 const ArticleCard = ({
   title,
@@ -15,7 +16,8 @@ const ArticleCard = ({
       <h3>{title}</h3>
       <p>{body}</p>
       <p>
-        Posted {created_at} in topic {topic} by user {author}
+        Posted {created_at} in topic{" "}
+        <Link to={`/articles/${topic}`}>{topic}</Link> by user {author}
       </p>
     </div>
   );

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import ArticleList from "./ArticleList";
 import * as api from "../API";
+import styles from "./Articles.module.css";
 
 class Articles extends Component {
   state = {
@@ -8,12 +9,11 @@ class Articles extends Component {
     isLoaded: false
   };
   render() {
-    const { articleData, articlesByTopic, isLoaded } = this.state;
+    const { articleData, isLoaded } = this.state;
     return (
       <div>
-        <h2>
-          {!this.props.topic ? "hello from all articles" : "hello from "}
-          {this.props.topic}
+        <h2 className={styles.h2}>
+          {!this.props.topic ? "all articles" : this.props.topic}
         </h2>
         {isLoaded ? <ArticleList articleData={articleData} /> : "loading..."}
       </div>
@@ -25,7 +25,8 @@ class Articles extends Component {
       .fetchAllArticles(this.props.topic)
       .then(({ data }) =>
         this.setState({ articleData: data.articles, isLoaded: true })
-      );
+      )
+      .catch(console.dir);
   };
 
   componentDidMount() {
