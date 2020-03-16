@@ -1,0 +1,15 @@
+header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-bottom: 4px solid var(--orange-yellow);
+}
+
+h1 {
+  font-family: "Cantata One", serif;
+  color: var(--pinkyred);
+}
+
+p {
+  color: var(--green);
+}

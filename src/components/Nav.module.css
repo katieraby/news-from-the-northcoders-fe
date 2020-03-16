@@ -1,0 +1,15 @@
+nav {
+  padding: 10px 0px;
+  background-color: #e7e7e7;
+}
+
+nav ul {
+  display: flex;
+  justify-content: space-around;
+  padding-left: 0;
+}
+
+li {
+  list-style-type: none;
+  color: var(--blue);
+}

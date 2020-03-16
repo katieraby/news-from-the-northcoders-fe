@@ -1,0 +1,21 @@
+/* holding global stylings */
+/* holding global styles */
+
+@import url("https://fonts.googleapis.com/css?family=Cantata+One|Imprima&display=swap");
+
+:root:global {
+  --whitegrey: #fefffe;
+  --green: #06d6a0;
+  --orange-yellow: #ffd166;
+  --pinkyred: #ef476f;
+  --blue: #26547c;
+}
+
+.App:global {
+  text-align: center;
+}
+
+body:global {
+  font-family: "Imprima", sans-serif;
+  margin: 0;
+}
