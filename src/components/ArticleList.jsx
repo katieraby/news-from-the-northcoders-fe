@@ -3,7 +3,6 @@ import ArticleCard from "./ArticleCard";
 import styles from "./ArticleList.module.css";
 
 const ArticleList = props => {
-  console.log(props.articleData);
   return (
     <main className={styles.listContainer}>
       {props.articleData.map(article => {

@@ -8,7 +8,7 @@ class Articles extends Component {
   state = {
     articleData: [],
     isLoaded: false,
-    sortBy: ""
+    sortBy: null
   };
 
   render() {
@@ -33,8 +33,8 @@ class Articles extends Component {
       .catch(console.dir);
   };
 
-  handleSort = sortQuery => {
-    this.setState({ sortBy: sortQuery });
+  handleSort = sortByQuery => {
+    this.setState({ sortBy: sortByQuery, isLoaded: false });
   };
 
   componentDidMount() {
@@ -42,11 +42,12 @@ class Articles extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (prevState.articleData !== this.state.articleData) {
+    if (prevProps.topic !== this.props.topic) {
       this.fetchAllArticles();
     }
 
     if (prevState.sortBy !== this.state.sortBy) {
+      console.log(this.state.sortBy);
       this.fetchAllArticles();
     }
   }
