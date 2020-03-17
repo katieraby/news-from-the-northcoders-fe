@@ -1,8 +1,10 @@
 import React from "react";
 import styles from "./ArticleCard.module.css";
 import { Link } from "@reach/router";
+import Votes from "./Votes";
 
 const ArticleCard = ({
+  article_id,
   title,
   body,
   votes,
@@ -19,6 +21,7 @@ const ArticleCard = ({
         Posted {created_at} in topic{" "}
         <Link to={`/articles/${topic}`}>{topic}</Link> by user {author}
       </p>
+      <Votes votes={votes} id={article_id} article={true} />
     </div>
   );
 };

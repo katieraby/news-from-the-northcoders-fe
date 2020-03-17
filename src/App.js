@@ -12,7 +12,7 @@ class App extends Component {
       <div>
         <Header loggedInUser={this.state.loggedInUser} />
         <Nav />
-        <Router>
+        <Router primary={false}>
           <Articles path="/">{/* <h2>Children Test</h2> */}</Articles>
           <Articles path="/articles/:topic">
             {/* <h2>Children Test 2 - Topics</h2> */}
