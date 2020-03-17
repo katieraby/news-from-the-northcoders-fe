@@ -13,6 +13,10 @@ export const fetchAllArticles = (topic, sort_by) => {
   });
 };
 
+export const fetchArticleById = id => {
+  return API.get(`/articles/${id}`);
+};
+
 const votesBody = { inc_votes: 1 };
 export const patchArticleVote = id => {
   return API.patch(`/articles/${id}`, votesBody);

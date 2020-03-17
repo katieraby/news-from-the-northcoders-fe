@@ -15,11 +15,13 @@ const ArticleCard = ({
 }) => {
   return (
     <div className={styles.articlesCard}>
-      <h3>{title}</h3>
+      <h3>
+        <Link to={`/articles/${article_id}`}>{title}</Link>
+      </h3>
       <p>{body}</p>
       <p>
         Posted {created_at} in topic{" "}
-        <Link to={`/articles/${topic}`}>{topic}</Link> by user {author}
+        <Link to={`/articles/${topic}/all`}>{topic}</Link> by user {author}
       </p>
       <Votes votes={votes} id={article_id} article={true} />
     </div>

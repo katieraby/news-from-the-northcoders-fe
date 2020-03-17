@@ -4,6 +4,7 @@ import Header from "./components/Header";
 import Nav from "./components/Nav";
 import { Router } from "@reach/router";
 import Articles from "./components/Articles";
+import ArticleById from "./components/ArticleById";
 
 class App extends Component {
   state = { loggedInUser: "JessJelly" };
@@ -13,10 +14,9 @@ class App extends Component {
         <Header loggedInUser={this.state.loggedInUser} />
         <Nav />
         <Router primary={false}>
-          <Articles path="/">{/* <h2>Children Test</h2> */}</Articles>
-          <Articles path="/articles/:topic">
-            {/* <h2>Children Test 2 - Topics</h2> */}
-          </Articles>
+          <Articles path="/" />
+          <Articles path="/articles/:topic/all" />
+          <ArticleById path="/articles/:article_id" />
         </Router>
       </div>
     );
