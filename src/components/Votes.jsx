@@ -7,6 +7,7 @@ class Votes extends Component {
     voteErr: null
   };
   render() {
+    console.log(this.props.comment);
     return (
       <div>
         <h4>votes: {this.props.votes + this.state.votesDifference}</h4>
@@ -24,7 +25,7 @@ class Votes extends Component {
   }
 
   upvoteRequest = id => {
-    if (this.props.article) {
+    if (this.props.article === true) {
       api.patchArticleVote(id).catch(err => {
         this.setState(prevState => {
           return {
@@ -41,7 +42,7 @@ class Votes extends Component {
       });
     }
 
-    if (this.props.comment) {
+    if (this.props.comment === true) {
       api.patchCommentVote(id).catch(err => {
         this.setState(prevState => {
           return {
@@ -49,12 +50,12 @@ class Votes extends Component {
             voteErr: err
           };
         });
-        this.setState(prevState => {
-          return {
-            votesDifference: prevState.votesDifference + 1,
-            voteErr: null
-          };
-        });
+      });
+      this.setState(prevState => {
+        return {
+          votesDifference: prevState.votesDifference + 1,
+          voteErr: null
+        };
       });
     }
   };
