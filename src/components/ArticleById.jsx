@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import * as api from "../API";
+import ErrorHandling from "./ErrorHandling";
+import styles from "./ArticleById.module.css";
 
 class ArticleById extends Component {
   state = {
@@ -13,11 +15,36 @@ class ArticleById extends Component {
       author: "cooljmessy",
       created_at: "2016-06-30T06:59:39.654Z",
       comment_count: "7"
-    }
+    },
+    err: null
   };
 
   render() {
-    return <div>in article {this.props.article_id}!</div>;
+    const {
+      articleById: {
+        article_id,
+        title,
+        body,
+        votes,
+        topic,
+        author,
+        created_at,
+        comment_count
+      }
+    } = this.state;
+
+    if (this.state.err) return <ErrorHandling />;
+
+    return (
+      <>
+        <h2>{topic}</h2>
+        <div className={styles.articleContainer}>
+          <main className={styles.article}>
+            in article {this.props.article_id}!
+          </main>
+        </div>
+      </>
+    );
   }
 
   fetchArticleData = id => {
@@ -26,7 +53,9 @@ class ArticleById extends Component {
       .then(({ data }) => {
         this.setState({ articleById: data.article });
       })
-      .catch(console.dir);
+      .catch(err => {
+        this.setState({ err });
+      });
   };
 
   componentDidMount() {
