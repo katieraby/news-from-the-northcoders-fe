@@ -17,7 +17,10 @@ class App extends Component {
         <Router primary={false}>
           <Articles path="/" />
           <Articles path="/topics/:topic" />
-          <ArticleById path="/articles/:article_id" />
+          <ArticleById
+            path="/articles/:article_id"
+            loggedInUser={this.state.loggedInUser}
+          />
           <ErrorHandling default />
         </Router>
       </div>

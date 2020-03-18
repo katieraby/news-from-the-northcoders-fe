@@ -3,6 +3,8 @@ import * as api from "../API";
 import ErrorHandling from "./ErrorHandling";
 import styles from "./ArticleById.module.css";
 import { Link } from "@reach/router";
+import Votes from "./Votes";
+import CommentList from "./CommentList";
 
 class ArticleById extends Component {
   state = {
@@ -51,6 +53,11 @@ class ArticleById extends Component {
                   {created_at} by {author}
                 </p>
                 <p>{body}</p>
+                <Votes votes={votes} id={article_id} article={true} />
+                <CommentList
+                  article_id={article_id}
+                  loggedInUser={this.props.loggedInUser}
+                />
               </main>
             </div>
           </>
