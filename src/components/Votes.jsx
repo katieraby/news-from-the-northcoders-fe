@@ -22,22 +22,17 @@ class Votes extends Component {
 
   upvoteRequest = id => {
     if (this.props.article) {
-      api
-        .patchArticleVote(id)
-        .then(({ data }) => {
-          console.log(data);
-          //   getting data back successfully in log
-        })
-        .catch(console.dir);
+      api.patchArticleVote(id);
+      this.setState(prevState => {
+        return { votesToIncrease: prevState.votesToIncrease + 1 };
+      });
     }
 
     if (this.props.comment) {
-      api
-        .patchCommentVote(id)
-        .then(({ data }) => {
-          console.log(data);
-        })
-        .catch(console.dir);
+      api.patchCommentVote(id);
+      this.setState(prevState => {
+        return { votesToIncrease: prevState.votesToIncrease + 1 };
+      });
     }
   };
 }

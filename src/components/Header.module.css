@@ -8,6 +8,7 @@ header {
 h1 {
   font-family: "Cantata One", serif;
   color: var(--pinkyred);
+  margin-left: 10px;
 }
 
 .headerP {
