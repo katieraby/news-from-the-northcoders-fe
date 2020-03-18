@@ -47,7 +47,6 @@ class Articles extends Component {
     }
 
     if (prevState.sortBy !== this.state.sortBy) {
-      console.log(this.state.sortBy);
       this.fetchAllArticles();
     }
   }

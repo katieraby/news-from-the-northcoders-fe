@@ -7,7 +7,6 @@ class Votes extends Component {
     voteErr: null
   };
   render() {
-    console.log(this.props.comment);
     return (
       <div>
         <h4>votes: {this.props.votes + this.state.votesDifference}</h4>
