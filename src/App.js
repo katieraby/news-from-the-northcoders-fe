@@ -8,7 +8,7 @@ import ArticleById from "./components/ArticleById";
 import ErrorHandling from "./components/ErrorHandling";
 
 class App extends Component {
-  state = { loggedInUser: "JessJelly" };
+  state = { loggedInUser: "jessjelly" };
   render() {
     return (
       <div>

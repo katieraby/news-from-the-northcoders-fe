@@ -25,3 +25,11 @@ export const patchArticleVote = id => {
 export const patchCommentVote = id => {
   return API.patch(`/comments/${id}`, votesBody);
 };
+
+export const fetchCommentsByArticleId = id => {
+  return API.get(`/articles/${id}/comments`);
+};
+
+export const deleteComment = id => {
+  return API.delete(`/comments/${id}`);
+};
