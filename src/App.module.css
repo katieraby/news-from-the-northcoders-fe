@@ -19,3 +19,9 @@ body:global {
   font-family: "Imprima", sans-serif;
   margin: 0;
 }
+
+h2:global {
+  font-family: "Cantata One", serif;
+  color: var(--pinkyred);
+  font-size: 1.8rem;
+}
