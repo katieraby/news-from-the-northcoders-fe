@@ -21,9 +21,12 @@ class ArticleById extends Component {
   }
 
   fetchArticleData = id => {
-    api.fetchArticleById(id).then(({ data }) => {
-      this.setState({ articleById: data.article });
-    });
+    api
+      .fetchArticleById(id)
+      .then(({ data }) => {
+        this.setState({ articleById: data.article });
+      })
+      .catch(console.dir);
   };
 
   componentDidMount() {

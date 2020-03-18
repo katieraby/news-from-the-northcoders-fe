@@ -5,6 +5,7 @@ import Nav from "./components/Nav";
 import { Router } from "@reach/router";
 import Articles from "./components/Articles";
 import ArticleById from "./components/ArticleById";
+import ErrorHandling from "./components/ErrorHandling";
 
 class App extends Component {
   state = { loggedInUser: "JessJelly" };
@@ -17,6 +18,7 @@ class App extends Component {
           <Articles path="/" />
           <Articles path="/articles/:topic/all" />
           <ArticleById path="/articles/:article_id" />
+          <ErrorHandling default />
         </Router>
       </div>
     );
