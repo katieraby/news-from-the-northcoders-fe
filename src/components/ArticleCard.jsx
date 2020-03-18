@@ -21,7 +21,7 @@ const ArticleCard = ({
       <p>{body}</p>
       <p>
         Posted {created_at} in topic{" "}
-        <Link to={`/articles/${topic}/all`}>{topic}</Link> by user {author}
+        <Link to={`/topics/${topic}`}>{topic}</Link> by user {author}
       </p>
       <Votes votes={votes} id={article_id} article={true} />
     </div>

@@ -16,7 +16,7 @@ class App extends Component {
         <Nav />
         <Router primary={false}>
           <Articles path="/" />
-          <Articles path="/articles/:topic/all" />
+          <Articles path="/topics/:topic" />
           <ArticleById path="/articles/:article_id" />
           <ErrorHandling default />
         </Router>

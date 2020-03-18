@@ -12,6 +12,7 @@ class Votes extends Component {
         <h4>votes: {this.props.votes + this.state.votesDifference}</h4>
         {this.state.voteErr !== null && <p>'Error voting'</p>}
         <button
+          disabled={this.state.votesDifference !== 0}
           onClick={() => {
             this.upvoteRequest(this.props.id);
           }}

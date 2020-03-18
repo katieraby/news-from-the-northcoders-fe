@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import * as api from "../API";
 import ErrorHandling from "./ErrorHandling";
 import styles from "./ArticleById.module.css";
+import { Link } from "@reach/router";
 
 class ArticleById extends Component {
   state = {
@@ -16,7 +17,8 @@ class ArticleById extends Component {
       created_at: "2016-06-30T06:59:39.654Z",
       comment_count: "7"
     },
-    err: null
+    err: null,
+    isLoaded: false
   };
 
   render() {
@@ -30,19 +32,29 @@ class ArticleById extends Component {
         author,
         created_at,
         comment_count
-      }
+      },
+      isLoaded
     } = this.state;
 
     if (this.state.err) return <ErrorHandling />;
 
     return (
       <>
-        <h2>{topic}</h2>
-        <div className={styles.articleContainer}>
-          <main className={styles.article}>
-            in article {this.props.article_id}!
-          </main>
-        </div>
+        {isLoaded ? (
+          <>
+            <h2>{topic}</h2>
+            <div className={styles.articleContainer}>
+              <main className={styles.article}>
+                <h3>{title}</h3>
+                <p>
+                  Posted in <Link to={`/topics/${topic}`}>{topic}</Link> on
+                  {created_at} by {author}
+                </p>
+                <p>{body}</p>
+              </main>
+            </div>
+          </>
+        ) : null}
       </>
     );
   }
@@ -51,7 +63,7 @@ class ArticleById extends Component {
     api
       .fetchArticleById(id)
       .then(({ data }) => {
-        this.setState({ articleById: data.article });
+        this.setState({ articleById: data.article, isLoaded: true });
       })
       .catch(err => {
         this.setState({ err });
