@@ -5,6 +5,7 @@ import styles from "./ArticleById.module.css";
 import { Link } from "@reach/router";
 import Votes from "./Votes";
 import CommentList from "./CommentList";
+import Loading from "./Loading";
 
 class ArticleById extends Component {
   state = {
@@ -61,7 +62,9 @@ class ArticleById extends Component {
               </main>
             </div>
           </>
-        ) : null}
+        ) : (
+          <Loading />
+        )}
       </>
     );
   }

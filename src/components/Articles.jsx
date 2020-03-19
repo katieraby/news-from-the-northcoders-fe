@@ -3,6 +3,7 @@ import ArticleList from "./ArticleList";
 import * as api from "../API";
 import styles from "./Articles.module.css";
 import SortBar from "./SortBar";
+import Loading from "./Loading";
 
 class Articles extends Component {
   state = {
@@ -19,7 +20,7 @@ class Articles extends Component {
           {!this.props.topic ? "all articles" : this.props.topic}
         </h2>
         <SortBar handleSort={this.handleSort} />
-        {isLoaded ? <ArticleList articleData={articleData} /> : "loading..."}
+        {isLoaded ? <ArticleList articleData={articleData} /> : <Loading />}
       </div>
     );
   }

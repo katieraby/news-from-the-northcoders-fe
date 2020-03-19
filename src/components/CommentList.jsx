@@ -4,6 +4,7 @@ import styles from "./CommentList.module.css";
 import CommentCard from "./CommentCard";
 import * as api from "../API";
 import ErrorHandling from "../components/ErrorHandling";
+import Loading from "./Loading";
 
 class CommentList extends Component {
   state = {
@@ -42,20 +43,23 @@ class CommentList extends Component {
             })}
           </>
         ) : (
-          <p>Loading comments...</p>
+          <Loading />
         )}
       </main>
     );
   }
 
   handlePostComment = objToPost => {
-    api.postComment(objToPost, this.props.article_id).then(({ data }) => {
-      this.setState(prevState => {
-        return { commentData: [data.comment, ...prevState.commentData] };
-      }).catch(err => {
+    api
+      .postComment(objToPost, this.props.article_id)
+      .then(({ data }) => {
+        this.setState(prevState => {
+          return { commentData: [data.comment, ...prevState.commentData] };
+        });
+      })
+      .catch(err => {
         this.setState({ err });
       });
-    });
   };
 
   handleDelete = id => {
