@@ -34,8 +34,7 @@ class ArticleById extends Component {
         votes,
         topic,
         author,
-        created_at,
-        comment_count
+        created_at
       },
       isLoaded
     } = this.state;
@@ -51,8 +50,8 @@ class ArticleById extends Component {
               <main className={styles.article}>
                 <h3>{title}</h3>
                 <p>
-                  Posted in <Link to={`/topics/${topic}`}>{topic}</Link> on
-                  {created_at} by {author}
+                  Posted in <Link to={`/topics/${topic}`}>{topic}</Link> on{" "}
+                  {moment(created_at).format("LLL")} by {author}
                 </p>
                 <p>{body}</p>
                 <Votes votes={votes} id={article_id} article={true} />

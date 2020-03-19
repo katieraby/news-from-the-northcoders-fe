@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./ArticleCard.module.css";
 import { Link } from "@reach/router";
 import Votes from "./Votes";
+import moment from "moment";
 
 const ArticleCard = ({
   article_id,
@@ -20,7 +21,7 @@ const ArticleCard = ({
       </h3>
       <p>{body}</p>
       <p>
-        Posted {created_at} in topic{" "}
+        Posted {moment(created_at).format("LLL")} in topic{" "}
         <Link to={`/topics/${topic}`}>{topic}</Link> by user {author}
       </p>
       <Votes votes={votes} id={article_id} article={true} />

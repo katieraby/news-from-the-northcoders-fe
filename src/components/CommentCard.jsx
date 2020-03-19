@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import styles from "./CommentCard.module.css";
 import Votes from "./Votes";
 import DeleteComment from "./DeleteComment";
+import moment from "moment";
 
 class CommentCard extends Component {
   render() {
@@ -17,7 +18,7 @@ class CommentCard extends Component {
     return (
       <div>
         <p className={styles.commentHeader}>
-          Posted by {author} on {created_at}
+          Posted by {author} on {moment(created_at).format("LLL")}
         </p>
         {loggedInUser === author ? (
           <DeleteComment
