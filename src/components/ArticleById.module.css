@@ -12,9 +12,9 @@ h2 {
 
 .article {
   border: 2px solid var(--blue);
-  padding: 10px;
+  padding: 15px;
   margin-bottom: 20px;
-  width: 65%;
+  width: 70%;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
   background-color: white;
 }

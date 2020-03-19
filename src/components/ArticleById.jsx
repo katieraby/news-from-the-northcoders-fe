@@ -6,6 +6,7 @@ import { Link } from "@reach/router";
 import Votes from "./Votes";
 import CommentList from "./CommentList";
 import Loading from "./Loading";
+import moment from "moment";
 
 class ArticleById extends Component {
   state = {

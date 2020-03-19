@@ -26,3 +26,11 @@ h2:global {
   color: var(--pinkyred);
   font-size: 1.8rem;
 }
+
+h3:global {
+  color: var(--pinkyred);
+}
+
+p:global {
+  color: #000;
+}

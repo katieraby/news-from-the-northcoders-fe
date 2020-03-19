@@ -1,6 +1,17 @@
 nav {
   padding: 10px 0px;
-  background-color: #e7e7e7;
+  background-color: #ebf2fa;
+  border-bottom: 4px solid var(--blue);
+}
+
+nav a {
+  text-decoration: none;
+  font-weight: 600;
+}
+
+nav a:visited {
+  color: #6290c3;
+  font-weight: 400;
 }
 
 nav ul {

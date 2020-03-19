@@ -1,8 +1,7 @@
 .commentBody {
-  color: var(--pinkyred);
 }
 
 .commentHeader {
   color: var(--blue);
-  background-color: azure;
+  background-color: #ebf2fa;
 }
