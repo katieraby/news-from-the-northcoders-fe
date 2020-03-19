@@ -14,7 +14,7 @@ class Articles extends Component {
   render() {
     const { articleData, isLoaded } = this.state;
     return (
-      <div>
+      <div className={styles.articles}>
         <h2 className={styles.h2}>
           {!this.props.topic ? "all articles" : this.props.topic}
         </h2>

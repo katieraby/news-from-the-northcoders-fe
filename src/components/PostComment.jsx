@@ -30,7 +30,10 @@ class PostComment extends Component {
   }
 
   handleInput = event => {
-    this.setState({ body: event.target.value });
+    this.setState({
+      body: event.target.value,
+      username: this.props.loggedInUser
+    });
   };
 
   handleSubmit = event => {

@@ -18,6 +18,7 @@
 body:global {
   font-family: "Imprima", sans-serif;
   margin: 0;
+  background-color: #fffafa;
 }
 
 h2:global {
