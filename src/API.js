@@ -33,3 +33,7 @@ export const fetchCommentsByArticleId = id => {
 export const deleteComment = id => {
   return API.delete(`/comments/${id}`);
 };
+
+export const postComment = (objToPost, articleId) => {
+  return API.post(`/articles/${articleId}/comments`);
+};

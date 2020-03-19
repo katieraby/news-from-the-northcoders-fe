@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import styles from "./CommentCard.module.css";
 import Votes from "./Votes";
 import DeleteComment from "./DeleteComment";
-import * as api from "../API";
 
 class CommentCard extends Component {
   render() {

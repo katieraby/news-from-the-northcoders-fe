@@ -8,8 +8,8 @@ class CommentList extends Component {
   state = {
     commentData: [],
     isLoaded: false
-    // deletedComment: false
   };
+
   render() {
     const { commentData, isLoaded } = this.state;
     const { loggedInUser } = this.props;
@@ -19,7 +19,9 @@ class CommentList extends Component {
         {isLoaded ? (
           <>
             <p>{commentData.length} comments</p>
-            {loggedInUser !== null ? <PostComment /> : null}
+            {loggedInUser !== null ? (
+              <PostComment loggedInUser={loggedInUser} />
+            ) : null}
             {commentData.map(comment => {
               return (
                 <CommentCard
