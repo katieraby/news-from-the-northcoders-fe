@@ -14,3 +14,13 @@ h1 {
 .headerP {
   color: var(--green);
 }
+
+.button {
+  border: 1px solid var(--green);
+}
+
+@media screen and (max-width: 640px) {
+  .button {
+    display: block;
+  }
+}

@@ -17,6 +17,7 @@ class PostComment extends Component {
         <label>
           <p>Logged in as {loggedInUser}. Post your comment below.</p>
           <input
+            required
             value={this.state.body}
             onChange={this.handleInput}
             className={styles.inputText}

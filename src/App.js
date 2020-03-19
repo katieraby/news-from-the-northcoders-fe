@@ -25,7 +25,7 @@ class App extends Component {
             path="/articles/:article_id"
             loggedInUser={loggedInUser}
           />
-          <ErrorHandling default />
+          <ErrorHandling status={404} msg={"Page Not Found"} default />
         </Router>
       </div>
     );
