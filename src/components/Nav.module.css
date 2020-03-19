@@ -4,12 +4,12 @@ nav {
   border-bottom: 4px solid var(--blue);
 }
 
-nav a {
+.navA {
   text-decoration: none;
   font-weight: 600;
 }
 
-nav a:visited {
+.navA:visited {
   color: #6290c3;
   font-weight: 400;
 }
@@ -20,7 +20,7 @@ nav ul {
   padding-left: 0;
 }
 
-li {
+.li {
   list-style-type: none;
   color: var(--blue);
 }

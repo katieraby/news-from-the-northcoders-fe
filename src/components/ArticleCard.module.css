@@ -10,3 +10,16 @@
 h3 {
   margin-top: 5px;
 }
+
+.aTitle {
+  color: var(--blue);
+}
+
+.aTitle:visited {
+  color: #6290c3;
+  font-weight: 400;
+}
+
+.aTopic {
+  color: var(--orange-yellow);
+}

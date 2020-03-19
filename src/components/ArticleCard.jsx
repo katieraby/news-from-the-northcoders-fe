@@ -17,12 +17,17 @@ const ArticleCard = ({
   return (
     <div className={styles.articlesCard}>
       <h3>
-        <Link to={`/articles/${article_id}`}>{title}</Link>
+        <Link className={styles.aTitle} to={`/articles/${article_id}`}>
+          {title}
+        </Link>
       </h3>
       <p>{body}</p>
       <p>
         Posted {moment(created_at).format("LLL")} in topic{" "}
-        <Link to={`/topics/${topic}`}>{topic}</Link> by user {author}
+        <Link className={styles.aTopic} to={`/topics/${topic}`}>
+          {topic}
+        </Link>{" "}
+        by user {author}
       </p>
       <Votes votes={votes} id={article_id} article={true} />
     </div>

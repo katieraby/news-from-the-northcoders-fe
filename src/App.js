@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import styles from "./App.module.css";
+import "./App.module.css";
 import Header from "./components/Header";
 import Nav from "./components/Nav";
 import { Router } from "@reach/router";

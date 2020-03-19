@@ -3,8 +3,10 @@ import React from "react";
 const ErrorHandling = ({ status, msg }) => {
   return (
     <div>
-      <h2>Ooops error {status}!</h2>
-      <p>{msg}</p>
+      <h2>
+        Ooops error {status}!<br />
+        {msg}
+      </h2>
     </div>
   );
 };
