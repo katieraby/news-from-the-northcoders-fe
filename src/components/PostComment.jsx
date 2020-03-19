@@ -1,6 +1,3 @@
-// takes logged in user and comment body text, logged in user is on props
-// need to send article id and objtopost
-
 import React, { Component } from "react";
 import styles from "./PostComment.module.css";
 
