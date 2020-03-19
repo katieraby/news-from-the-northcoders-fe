@@ -38,6 +38,8 @@ class PostComment extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
+    this.props.handlePostComment(this.state);
+    this.setState({ username: "", body: "" });
   };
 }
 

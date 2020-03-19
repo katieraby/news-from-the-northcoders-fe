@@ -35,5 +35,5 @@ export const deleteComment = id => {
 };
 
 export const postComment = (objToPost, articleId) => {
-  return API.post(`/articles/${articleId}/comments`);
+  return API.post(`/articles/${articleId}/comments`, objToPost);
 };

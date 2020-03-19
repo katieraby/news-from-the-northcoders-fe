@@ -10,7 +10,7 @@ const Header = props => {
         <p className={styles.headerP}>Logged in: {props.loggedInUser} </p>
       ) : null}
 
-      <button onClick={props.toggleLoggedIn}>
+      <button className={styles.button} onClick={props.toggleLoggedIn}>
         {props.loggedInUser === null ? "Log In" : "Log Out"}
       </button>
     </header>

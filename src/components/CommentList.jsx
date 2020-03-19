@@ -20,7 +20,10 @@ class CommentList extends Component {
           <>
             <p>{commentData.length} comments</p>
             {loggedInUser !== null ? (
-              <PostComment loggedInUser={loggedInUser} />
+              <PostComment
+                loggedInUser={loggedInUser}
+                handlePostComment={this.handlePostComment}
+              />
             ) : null}
             {commentData.map(comment => {
               return (
@@ -39,6 +42,14 @@ class CommentList extends Component {
       </main>
     );
   }
+
+  handlePostComment = objToPost => {
+    api.postComment(objToPost, this.props.article_id).then(({ data }) => {
+      this.setState(prevState => {
+        return { commentData: [data.comment, ...prevState.commentData] };
+      });
+    });
+  };
 
   handleDelete = id => {
     api.deleteComment(id).then(() => {
