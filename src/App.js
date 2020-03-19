@@ -8,24 +8,36 @@ import ArticleById from "./components/ArticleById";
 import ErrorHandling from "./components/ErrorHandling";
 
 class App extends Component {
-  state = { loggedInUser: "jessjelly" };
+  state = { loggedInUser: null };
   render() {
+    const { loggedInUser } = this.state;
     return (
       <div>
-        <Header loggedInUser={this.state.loggedInUser} />
+        <Header
+          toggleLoggedIn={this.toggleLoggedIn}
+          loggedInUser={loggedInUser}
+        />
         <Nav />
         <Router primary={false}>
           <Articles path="/" />
           <Articles path="/topics/:topic" />
           <ArticleById
             path="/articles/:article_id"
-            loggedInUser={this.state.loggedInUser}
+            loggedInUser={loggedInUser}
           />
           <ErrorHandling default />
         </Router>
       </div>
     );
   }
+
+  toggleLoggedIn = () => {
+    this.setState(currState => {
+      return currState.loggedInUser === "jessjelly"
+        ? { loggedInUser: null }
+        : { loggedInUser: "jessjelly" };
+    });
+  };
 }
 
 export default App;
