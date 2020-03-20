@@ -5,7 +5,7 @@ Welcome to News From The Northcoders - a Reddit-style news React app, which allo
 Each of the articles and comments can be up or down voted, only once per user, which in turn affects the 'most popular' article sorting. The app also has pagniation allowing you to click through and view more articles than available on the first pages.
 
 *You can find the hosted project here:* \
-link TBC
+https://news-from-the-northcoders.netlify.com
 
 *You can find the hosted API used here:* \
 https://news-from-the-northcoders-api.herokuapp.com/
