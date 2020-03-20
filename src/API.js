@@ -4,9 +4,10 @@ const API = axios.create({
   baseURL: "https://news-from-the-northcoders-api.herokuapp.com/api"
 });
 
-export const fetchAllArticles = (topic, sort_by) => {
+export const fetchAllArticles = (topic, sort_by, p) => {
   return API.get("/articles", {
     params: {
+      p,
       topic,
       sort_by
     }

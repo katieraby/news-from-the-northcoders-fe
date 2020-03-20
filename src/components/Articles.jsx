@@ -9,11 +9,13 @@ class Articles extends Component {
   state = {
     articleData: [],
     isLoaded: false,
-    sortBy: null
+    sortBy: null,
+    page: 1,
+    totalCount: 1
   };
 
   render() {
-    const { articleData, isLoaded } = this.state;
+    const { articleData, isLoaded, totalCount, page } = this.state;
     return (
       <div className={styles.articles}>
         <h2 className={styles.h2}>
@@ -21,17 +23,43 @@ class Articles extends Component {
         </h2>
         <SortBar handleSort={this.handleSort} />
         {isLoaded ? <ArticleList articleData={articleData} /> : <Loading />}
+        <button
+          disabled={page === 1}
+          onClick={() => {
+            this.changePage(-1);
+          }}
+        >
+          Previous
+        </button>
+        <button
+          disabled={Math.ceil(totalCount / 10) <= page}
+          onClick={() => {
+            this.changePage(1);
+          }}
+        >
+          Next
+        </button>
       </div>
     );
   }
 
   fetchAllArticles = () => {
     api
-      .fetchAllArticles(this.props.topic, this.state.sortBy)
+      .fetchAllArticles(this.props.topic, this.state.sortBy, this.state.page)
       .then(({ data }) =>
-        this.setState({ articleData: data.articles, isLoaded: true })
+        this.setState({
+          articleData: data.articles,
+          totalCount: data.totalCount,
+          isLoaded: true
+        })
       )
       .catch(console.dir);
+  };
+
+  changePage = direction => {
+    this.setState(currState => {
+      return { page: currState.page + direction };
+    });
   };
 
   handleSort = sortByQuery => {
@@ -43,11 +71,11 @@ class Articles extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (prevProps.topic !== this.props.topic) {
-      this.fetchAllArticles();
-    }
-
-    if (prevState.sortBy !== this.state.sortBy) {
+    if (
+      prevProps.topic !== this.props.topic ||
+      prevState.sortBy !== this.state.sortBy ||
+      prevState.page !== this.state.page
+    ) {
       this.fetchAllArticles();
     }
   }
