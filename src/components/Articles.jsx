@@ -22,23 +22,30 @@ class Articles extends Component {
           {!this.props.topic ? "all articles" : this.props.topic}
         </h2>
         <SortBar handleSort={this.handleSort} />
-        {isLoaded ? <ArticleList articleData={articleData} /> : <Loading />}
-        <button
-          disabled={page === 1}
-          onClick={() => {
-            this.changePage(-1);
-          }}
-        >
-          Previous
-        </button>
-        <button
-          disabled={Math.ceil(totalCount / 10) <= page}
-          onClick={() => {
-            this.changePage(1);
-          }}
-        >
-          Next
-        </button>
+        {isLoaded ? (
+          <>
+            <ArticleList articleData={articleData} />
+
+            <button
+              disabled={page === 1}
+              onClick={() => {
+                this.changePage(-1);
+              }}
+            >
+              Previous
+            </button>
+            <button
+              disabled={Math.ceil(totalCount / 10) <= page}
+              onClick={() => {
+                this.changePage(1);
+              }}
+            >
+              Next
+            </button>
+          </>
+        ) : (
+          <Loading />
+        )}
       </div>
     );
   }
