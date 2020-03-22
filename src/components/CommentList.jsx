@@ -10,12 +10,14 @@ class CommentList extends Component {
   state = {
     commentData: [],
     isLoaded: false,
-    err: null
+    err: null,
+    page: 1
   };
 
   render() {
-    const { commentData, isLoaded, err } = this.state;
+    const { commentData, isLoaded, err, page } = this.state;
     const { loggedInUser } = this.props;
+
     return (
       <main className={styles.listContainer}>
         <h3>Comments</h3>
@@ -41,6 +43,22 @@ class CommentList extends Component {
                 />
               );
             })}
+            <button
+              disabled={page === 1}
+              onClick={() => {
+                this.changePage(-1);
+              }}
+            >
+              Prev
+            </button>
+            <button
+              disabled={commentData.length / 10 > page}
+              onClick={() => {
+                this.changePage(1);
+              }}
+            >
+              Next
+            </button>
           </>
         ) : (
           <Loading />
@@ -73,9 +91,15 @@ class CommentList extends Component {
       });
   };
 
+  changePage = direction => {
+    this.setState(currState => {
+      return { page: currState.page + direction };
+    });
+  };
+
   fetchCommentsByArticleId = () => {
     api
-      .fetchCommentsByArticleId(this.props.article_id)
+      .fetchCommentsByArticleId(this.props.article_id, this.state.page)
       .then(({ data }) => {
         this.setState({ commentData: data.comments, isLoaded: true });
       })
@@ -86,6 +110,12 @@ class CommentList extends Component {
 
   componentDidMount() {
     this.fetchCommentsByArticleId();
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.page !== this.state.page) {
+      this.fetchCommentsByArticleId();
+    }
   }
 }
 
