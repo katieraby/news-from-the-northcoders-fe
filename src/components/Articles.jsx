@@ -20,9 +20,15 @@ class Articles extends Component {
     const { articleData, isLoaded, totalCount, page, err } = this.state;
     return (
       <div className={styles.articles}>
-        <h2 className={styles.h2}>
-          {!this.props.topic ? "all articles" : this.props.topic}
-        </h2>
+        {this.props.topic ? (
+          <h2 className={styles.h2}>{this.props.topic}</h2>
+        ) : null}
+        {this.props.author ? (
+          <h2 className={styles.h2}>articles by {this.props.author}</h2>
+        ) : null}
+        {!this.props.topic && !this.props.author ? (
+          <h2 className={styles.h2}>all articles</h2>
+        ) : null}
         <SortBar handleSort={this.handleSort} />
         {err === null ? null : (
           <ErrorHandling msg={err.data.msg} status={err.status} />
