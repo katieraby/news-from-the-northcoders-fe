@@ -12,6 +12,7 @@ h2 {
   font-family: "Imprima", sans-serif;
   background-color: var(--magicmint);
   color: #034e3b;
+  cursor: pointer;
 }
 
 .button:hover {
