@@ -7,11 +7,17 @@ nav {
 .navA {
   text-decoration: none;
   font-weight: 600;
+  color: #48698e;
 }
 
 .navA:visited {
   color: #6290c3;
   font-weight: 400;
+}
+
+.navA:hover {
+  opacity: 0.7;
+  transition: ease-in 0.2s;
 }
 
 nav ul {
