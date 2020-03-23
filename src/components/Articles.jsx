@@ -4,6 +4,7 @@ import * as api from "../API";
 import styles from "./Articles.module.css";
 import SortBar from "./SortBar";
 import Loading from "./Loading";
+import ErrorHandling from "./ErrorHandling";
 
 class Articles extends Component {
   state = {
@@ -11,17 +12,21 @@ class Articles extends Component {
     isLoaded: false,
     sortBy: null,
     page: 1,
-    totalCount: 1
+    totalCount: 1,
+    err: null
   };
 
   render() {
-    const { articleData, isLoaded, totalCount, page } = this.state;
+    const { articleData, isLoaded, totalCount, page, err } = this.state;
     return (
       <div className={styles.articles}>
         <h2 className={styles.h2}>
           {!this.props.topic ? "all articles" : this.props.topic}
         </h2>
         <SortBar handleSort={this.handleSort} />
+        {err === null ? null : (
+          <ErrorHandling msg={err.data.msg} status={err.status} />
+        )}
         {isLoaded ? (
           <>
             <ArticleList articleData={articleData} />
@@ -60,7 +65,9 @@ class Articles extends Component {
           isLoaded: true
         })
       )
-      .catch(console.dir);
+      .catch(err => {
+        this.setState({ err: err.response, isLoaded: true });
+      });
   };
 
   changePage = direction => {
