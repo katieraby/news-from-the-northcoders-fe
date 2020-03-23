@@ -27,7 +27,10 @@ const ArticleCard = ({
         <Link className={styles.aTopic} to={`/topics/${topic}`}>
           {topic}
         </Link>{" "}
-        by user {author}
+        by user{" "}
+        <Link className={styles.aTopic} to={`/${author}/articles`}>
+          {author}
+        </Link>
       </p>
       <Votes votes={votes} id={article_id} article={true} />
     </div>

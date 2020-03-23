@@ -60,7 +60,12 @@ class Articles extends Component {
 
   fetchAllArticles = () => {
     api
-      .fetchAllArticles(this.props.topic, this.state.sortBy, this.state.page)
+      .fetchAllArticles(
+        this.props.topic,
+        this.state.sortBy,
+        this.state.page,
+        this.props.author
+      )
       .then(({ data }) =>
         this.setState({
           articleData: data.articles,

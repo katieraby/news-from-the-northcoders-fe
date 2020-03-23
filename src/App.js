@@ -21,6 +21,7 @@ class App extends Component {
         <Router primary={false}>
           <Articles path="/" />
           <Articles path="/topics/:topic" />
+          <Articles path="/:author/articles" />
           <ArticleById
             path="/articles/:article_id"
             loggedInUser={loggedInUser}
