@@ -30,23 +30,26 @@ class Articles extends Component {
         {isLoaded ? (
           <>
             <ArticleList articleData={articleData} />
-
-            <button
-              disabled={page === 1}
-              onClick={() => {
-                this.changePage(-1);
-              }}
-            >
-              Previous
-            </button>
-            <button
-              disabled={Math.ceil(totalCount / 10) <= page}
-              onClick={() => {
-                this.changePage(1);
-              }}
-            >
-              Next
-            </button>
+            <div className={styles.btnContainer}>
+              <button
+                className={styles.button}
+                disabled={page === 1}
+                onClick={() => {
+                  this.changePage(-1);
+                }}
+              >
+                Previous
+              </button>
+              <button
+                className={styles.button}
+                disabled={Math.ceil(totalCount / 10) <= page}
+                onClick={() => {
+                  this.changePage(1);
+                }}
+              >
+                Next
+              </button>
+            </div>
           </>
         ) : (
           <Loading />

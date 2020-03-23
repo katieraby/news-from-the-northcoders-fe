@@ -43,22 +43,26 @@ class CommentList extends Component {
                 />
               );
             })}
-            <button
-              disabled={page === 1}
-              onClick={() => {
-                this.changePage(-1);
-              }}
-            >
-              Prev
-            </button>
-            <button
-              disabled={commentData.length / 10 > page}
-              onClick={() => {
-                this.changePage(1);
-              }}
-            >
-              Next
-            </button>
+            <div className={styles.btnContainer}>
+              <button
+                className={styles.button}
+                disabled={page === 1}
+                onClick={() => {
+                  this.changePage(-1);
+                }}
+              >
+                Prev
+              </button>
+              <button
+                className={styles.button}
+                disabled={commentData.length / 10 > page}
+                onClick={() => {
+                  this.changePage(1);
+                }}
+              >
+                Next
+              </button>
+            </div>
           </>
         ) : (
           <Loading />
