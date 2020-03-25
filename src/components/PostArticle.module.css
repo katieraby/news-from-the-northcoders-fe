@@ -19,7 +19,7 @@
   margin-top: 5px;
   padding: 5px;
   height: 80px;
-  width: 90%;
+  width: 95%;
   border: 2px solid var(--magicmint);
 }
 
@@ -28,7 +28,7 @@
 }
 
 .titlearea {
-  width: 90%;
+  width: 95%;
   padding: 5px;
   margin-bottom: 10px;
   border: 2px solid var(--magicmint);
@@ -40,7 +40,7 @@
 }
 
 .topicarea {
-  width: 90%;
+  width: 95%;
   padding: 5px;
   margin-bottom: 10px;
   border: 2px solid var(--magicmint);
