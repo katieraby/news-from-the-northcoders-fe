@@ -11,12 +11,14 @@ class CommentList extends Component {
     commentData: [],
     isLoaded: false,
     err: null,
-    page: 1
+    page: 1,
+    totalCount: 1
   };
 
   render() {
-    const { commentData, isLoaded, err, page } = this.state;
-    const { loggedInUser } = this.props;
+    const { commentData, isLoaded, err, page, totalCount } = this.state;
+    const { loggedInUser, comment_count } = this.props;
+    console.log(totalCount);
 
     return (
       <main className={styles.listContainer}>
@@ -26,7 +28,7 @@ class CommentList extends Component {
         ) : null}
         {isLoaded ? (
           <>
-            <p>{commentData.length} comments</p>
+            <p>{comment_count} comments</p>
             {loggedInUser !== null ? (
               <PostComment
                 loggedInUser={loggedInUser}
@@ -55,7 +57,7 @@ class CommentList extends Component {
               </button>
               <button
                 className={styles.button}
-                disabled={commentData.length / 10 > page}
+                disabled={Math.ceil(totalCount / 10) <= page}
                 onClick={() => {
                   this.changePage(1);
                 }}
@@ -105,7 +107,11 @@ class CommentList extends Component {
     api
       .fetchCommentsByArticleId(this.props.article_id, this.state.page)
       .then(({ data }) => {
-        this.setState({ commentData: data.comments, isLoaded: true });
+        this.setState({
+          commentData: data.comments,
+          totalCount: this.props.comment_count,
+          isLoaded: true
+        });
       })
       .catch(err => {
         this.setState({ err });
