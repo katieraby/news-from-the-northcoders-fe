@@ -17,16 +17,16 @@ class PostArticle extends Component {
               placeholder="Title of the article here"
             ></input>
           </label>
-          <label className={styles.topic}>
-            Topic:{" "}
+          <label>
+            <span className={styles.topic}>Topic:</span>
             <input
               type="text"
               placeholder="Topic of the article here"
               className={styles.topicarea}
             ></input>
           </label>
-          <label className={styles.content}>
-            Content:
+          <label>
+            <span className={styles.content}>Content:</span>
             <textarea
               className={styles.contentArea}
               rows="10"

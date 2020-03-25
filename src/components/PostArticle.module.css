@@ -23,6 +23,10 @@
   border: 2px solid var(--magicmint);
 }
 
+.content {
+  display: block;
+}
+
 .titlearea {
   width: 90%;
   padding: 5px;
@@ -31,10 +35,18 @@
   margin-top: 5px;
 }
 
+.title {
+  display: block;
+}
+
 .topicarea {
   width: 90%;
   padding: 5px;
   margin-bottom: 10px;
   border: 2px solid var(--magicmint);
   margin-top: 5px;
+}
+
+.topic {
+  display: block;
 }
