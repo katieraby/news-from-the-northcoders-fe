@@ -19,9 +19,9 @@ class App extends Component {
         />
         <Nav />
         <Router primary={false}>
-          <Articles path="/" />
-          <Articles path="/topics/:topic" />
-          <Articles path="/:author/articles" />
+          <Articles path="/" loggedInUser={loggedInUser} />
+          <Articles path="/topics/:topic" loggedInUser={loggedInUser} />
+          <Articles path="/:author/articles" loggedInUser={loggedInUser} />
           <ArticleById
             path="/articles/:article_id"
             loggedInUser={loggedInUser}

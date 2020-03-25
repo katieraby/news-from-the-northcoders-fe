@@ -6,7 +6,14 @@ const ArticleList = props => {
   return (
     <main className={styles.listContainer}>
       {props.articleData.map(article => {
-        return <ArticleCard {...article} key={article.article_id} />;
+        return (
+          <ArticleCard
+            {...article}
+            key={article.article_id}
+            loggedInUser={props.loggedInUser}
+            handleDelete={props.handleDelete}
+          />
+        );
       })}
     </main>
   );

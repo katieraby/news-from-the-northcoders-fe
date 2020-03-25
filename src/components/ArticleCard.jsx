@@ -12,7 +12,8 @@ const ArticleCard = ({
   topic,
   author,
   created_at,
-  comment_count
+  loggedInUser,
+  handleDelete
 }) => {
   return (
     <div className={styles.articlesCard}>
@@ -20,6 +21,15 @@ const ArticleCard = ({
         <Link className={styles.aTitle} to={`/articles/${article_id}`}>
           {title}
         </Link>
+        {loggedInUser === author ? (
+          <button
+            onClick={() => {
+              handleDelete(article_id);
+            }}
+          >
+            Delete Article
+          </button>
+        ) : null}
       </h3>
       <p>{body}</p>
       <p>

@@ -18,6 +18,7 @@ class Articles extends Component {
 
   render() {
     const { articleData, isLoaded, totalCount, page, err } = this.state;
+    const { loggedInUser } = this.props;
     return (
       <div className={styles.articles}>
         {this.props.topic ? (
@@ -35,7 +36,11 @@ class Articles extends Component {
         )}
         {isLoaded ? (
           <>
-            <ArticleList articleData={articleData} />
+            <ArticleList
+              handleDelete={this.handleDelete}
+              articleData={articleData}
+              loggedInUser={loggedInUser}
+            />
             <div className={styles.btnContainer}>
               <button
                 className={styles.button}
@@ -82,6 +87,12 @@ class Articles extends Component {
       .catch(err => {
         this.setState({ err: err.response, isLoaded: true });
       });
+  };
+
+  handleDelete = articleId => {
+    api.deleteArticle(articleId).then(() => {
+      this.fetchAllArticles();
+    });
   };
 
   changePage = direction => {

@@ -47,3 +47,7 @@ export const postComment = (objToPost, articleId) => {
 export const fetchAllTopics = () => {
   return API.get("/topics");
 };
+
+export const deleteArticle = id => {
+  return API.delete(`/articles/${id}`);
+};
