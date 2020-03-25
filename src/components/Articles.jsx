@@ -5,6 +5,7 @@ import styles from "./Articles.module.css";
 import SortBar from "./SortBar";
 import Loading from "./Loading";
 import ErrorHandling from "./ErrorHandling";
+import PostArticle from "./PostArticle";
 
 class Articles extends Component {
   state = {
@@ -34,6 +35,7 @@ class Articles extends Component {
         {err === null ? null : (
           <ErrorHandling msg={err.data.msg} status={err.status} />
         )}
+        <PostArticle />
         {isLoaded ? (
           <>
             <ArticleList

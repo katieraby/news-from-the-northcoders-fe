@@ -1,0 +1,37 @@
+.formContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.form {
+  width: 70%;
+  text-align: center;
+  padding: 20px 20px;
+  background-color: lavender;
+  display: inline-block;
+  margin-bottom: 20px;
+  border-radius: 10px;
+}
+
+.contentArea {
+  margin-top: 5px;
+  padding: 5px;
+  height: 80px;
+  width: 90%;
+  border: 1px solid plum;
+  border-radius: 10px;
+}
+
+.titlearea {
+  width: 90%;
+  padding: 5px;
+  margin-bottom: 10px;
+  margin-top: 5px;
+}
+
+.topicarea {
+  width: 90%;
+  padding: 5px;
+  margin-bottom: 10px;
+  margin-top: 5px;
+}
