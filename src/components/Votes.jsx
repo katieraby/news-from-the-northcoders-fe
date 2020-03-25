@@ -4,26 +4,45 @@ import * as api from "../API";
 class Votes extends Component {
   state = {
     votesDifference: 0,
-    voteErr: null
+    voteErr: null,
+    upvoteClicked: false,
+    downvoteClicked: false
   };
   render() {
+    const {
+      votesDifference,
+      voteErr,
+      upvoteClicked,
+      downvoteClicked
+    } = this.state;
+
     return (
       <div>
-        <h4>votes: {this.props.votes + this.state.votesDifference}</h4>
-        {this.state.voteErr !== null && <p>'Error voting'</p>}
+        <h4>votes: {this.props.votes + votesDifference}</h4>
+        {voteErr !== null && <p>'Error voting'</p>}
         <button
-          disabled={this.state.votesDifference !== 0}
+          disabled={upvoteClicked}
           onClick={() => {
-            this.upvoteRequest(this.props.id);
+            this.upvoteRequest(this.props.id, 1);
+            this.setState({ upvoteClicked: true });
           }}
         >
           upvote
+        </button>
+        <button
+          disabled={downvoteClicked}
+          onClick={() => {
+            this.upvoteRequest(this.props.id, -1);
+            this.setState({ downvoteClicked: true });
+          }}
+        >
+          downvote
         </button>
       </div>
     );
   }
 
-  upvoteRequest = id => {
+  upvoteRequest = (id, difference) => {
     if (this.props.article === true) {
       api.patchArticleVote(id).catch(err => {
         this.setState(prevState => {
@@ -35,7 +54,7 @@ class Votes extends Component {
       });
       this.setState(prevState => {
         return {
-          votesDifference: prevState.votesDifference + 1,
+          votesDifference: prevState.votesDifference + difference,
           voteErr: null
         };
       });
@@ -52,7 +71,7 @@ class Votes extends Component {
       });
       this.setState(prevState => {
         return {
-          votesDifference: prevState.votesDifference + 1,
+          votesDifference: prevState.votesDifference + difference,
           voteErr: null
         };
       });
