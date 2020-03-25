@@ -18,7 +18,6 @@ class CommentList extends Component {
   render() {
     const { commentData, isLoaded, err, page, totalCount } = this.state;
     const { loggedInUser, comment_count } = this.props;
-    console.log(totalCount);
 
     return (
       <main className={styles.listContainer}>
