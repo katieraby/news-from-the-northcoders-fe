@@ -4,13 +4,15 @@
 }
 
 .form {
-  width: 70%;
   text-align: center;
+  width: 70%;
   padding: 20px 20px;
-  background-color: lavender;
+  border: 2px solid var(--green);
+  background-color: white;
   display: inline-block;
   margin-bottom: 20px;
-  border-radius: 10px;
+  color: palevioletred;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
 }
 
 .contentArea {
@@ -18,14 +20,14 @@
   padding: 5px;
   height: 80px;
   width: 90%;
-  border: 1px solid plum;
-  border-radius: 10px;
+  border: 2px solid var(--magicmint);
 }
 
 .titlearea {
   width: 90%;
   padding: 5px;
   margin-bottom: 10px;
+  border: 2px solid var(--magicmint);
   margin-top: 5px;
 }
 
@@ -33,5 +35,6 @@
   width: 90%;
   padding: 5px;
   margin-bottom: 10px;
+  border: 2px solid var(--magicmint);
   margin-top: 5px;
 }

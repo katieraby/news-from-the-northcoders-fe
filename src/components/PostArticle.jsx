@@ -9,8 +9,8 @@ class PostArticle extends Component {
       <div className={styles.formContainer}>
         <form className={styles.form}>
           <h3>Write a new article</h3>
-          <label className={styles.title}>
-            Title:{" "}
+          <label>
+            <span className={styles.title}>Title:</span>
             <input
               type="text"
               className={styles.titlearea}
