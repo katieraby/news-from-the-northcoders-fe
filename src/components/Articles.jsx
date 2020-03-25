@@ -35,7 +35,7 @@ class Articles extends Component {
         {err === null ? null : (
           <ErrorHandling msg={err.data.msg} status={err.status} />
         )}
-        <PostArticle />
+        <PostArticle loggedInUser={loggedInUser} />
         {isLoaded ? (
           <>
             <ArticleList
