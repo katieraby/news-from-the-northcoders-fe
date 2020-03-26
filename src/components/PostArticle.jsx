@@ -2,15 +2,15 @@ import React, { Component } from "react";
 import styles from "./PostArticle.module.css";
 
 class PostArticle extends Component {
-  state = { username: "", title: "", topic: "", body: "" };
+  state = { username: "", title: "", topic: "", body: "", createNew: false };
 
   render() {
-    const { title, topic, body } = this.state;
+    const { title, topic, body, createNew } = this.state;
 
     return (
       <div className={styles.formContainer}>
         <form className={styles.form} onSubmit={this.handleSubmit}>
-          <h3>Write a new article</h3>
+          <h3>Post a new article</h3>
           <label>
             <span className={styles.title}>Title:</span>
             <input
@@ -25,16 +25,32 @@ class PostArticle extends Component {
           </label>
           <label>
             <span className={styles.topic}>Topic:</span>
-            <input
-              required
-              type="text"
+            <select
               name="topic"
-              value={topic}
-              placeholder="Topic of the article here"
               className={styles.topicarea}
               onChange={this.handleInput}
-            ></input>
+              value=""
+            >
+              <option value="" disabled>
+                Select an existing topic or create a new one...
+              </option>
+              {this.props.topicData.map(topic => {
+                return <option key={topic.slug}>{topic.slug}</option>;
+              })}
+              <option value="createNew">Create a new topic...</option>
+            </select>
           </label>
+          {createNew && (
+            <label>
+              New topic:
+              <input
+                name="topic"
+                type="text"
+                className={styles.titlearea}
+                onSelect={this.handleInput}
+              ></input>
+            </label>
+          )}
           <label>
             <span className={styles.content}>Content:</span>
             <textarea
@@ -54,15 +70,28 @@ class PostArticle extends Component {
   }
 
   handleInput = event => {
+    event.preventDefault();
     this.setState({ [event.target.name]: event.target.value });
     this.setState({ username: this.props.loggedInUser });
   };
 
+  handleNewTopic = event => {
+    this.setState({ createNew: true });
+    this.setState({ topic: "" });
+  };
+
   handleSubmit = event => {
+    const { username, body, topic, title } = this.state;
     event.preventDefault();
-    this.props.postAnArticle(this.state);
+    this.props.postAnArticle({ username, body, topic, title });
     this.setState({ body: "", topic: "", title: "" });
   };
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.topic === "createNew") {
+      this.handleNewTopic();
+    }
+  }
 }
 
 export default PostArticle;

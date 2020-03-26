@@ -14,11 +14,19 @@ class Articles extends Component {
     sortBy: null,
     page: 1,
     totalCount: 1,
-    err: null
+    err: null,
+    topicData: []
   };
 
   render() {
-    const { articleData, isLoaded, totalCount, page, err } = this.state;
+    const {
+      articleData,
+      isLoaded,
+      totalCount,
+      page,
+      err,
+      topicData
+    } = this.state;
     const { loggedInUser } = this.props;
     return (
       <div className={styles.articles}>
@@ -41,6 +49,7 @@ class Articles extends Component {
           <PostArticle
             loggedInUser={loggedInUser}
             postAnArticle={this.postAnArticle}
+            topicData={topicData}
           />
         )}
 
@@ -120,6 +129,17 @@ class Articles extends Component {
       });
   };
 
+  fetchTopics = () => {
+    api
+      .fetchAllTopics()
+      .then(({ data }) => {
+        this.setState({ topicData: data.topics });
+      })
+      .catch(err => {
+        this.setState({ err: err.response, isLoaded: true });
+      });
+  };
+
   changePage = direction => {
     this.setState(currState => {
       return { page: currState.page + direction };
@@ -137,6 +157,10 @@ class Articles extends Component {
       prevState.page !== this.state.page
     ) {
       this.fetchAllArticles();
+    }
+
+    if (prevProps.loggedInUser !== this.props.loggedInUser) {
+      this.fetchTopics();
     }
   }
 }
