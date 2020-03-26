@@ -6,7 +6,7 @@ class PostArticle extends Component {
 
   render() {
     const { title, topic, body, createNew } = this.state;
-
+    console.log(topic);
     return (
       <div className={styles.formContainer}>
         <form className={styles.form} onSubmit={this.handleSubmit}>
@@ -29,9 +29,8 @@ class PostArticle extends Component {
               name="topic"
               className={styles.topicarea}
               onChange={this.handleInput}
-              value=""
             >
-              <option value="" disabled>
+              <option selected disabled>
                 Select an existing topic or create a new one...
               </option>
               {this.props.topicData.map(topic => {
@@ -70,9 +69,12 @@ class PostArticle extends Component {
   }
 
   handleInput = event => {
-    event.preventDefault();
-    this.setState({ [event.target.name]: event.target.value });
-    this.setState({ username: this.props.loggedInUser });
+    if (event.target.value !== "createNew") {
+      this.setState({ [event.target.name]: event.target.value });
+      this.setState({ username: this.props.loggedInUser });
+    } else {
+      this.handleNewTopic();
+    }
   };
 
   handleNewTopic = event => {
@@ -86,12 +88,6 @@ class PostArticle extends Component {
     this.props.postAnArticle({ username, body, topic, title });
     this.setState({ body: "", topic: "", title: "" });
   };
-
-  componentDidUpdate(prevProps, prevState) {
-    if (this.state.topic === "createNew") {
-      this.handleNewTopic();
-    }
-  }
 }
 
 export default PostArticle;
