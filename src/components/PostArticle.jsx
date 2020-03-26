@@ -14,6 +14,7 @@ class PostArticle extends Component {
           <label>
             <span className={styles.title}>Title:</span>
             <input
+              required
               type="text"
               name="title"
               value={title}
@@ -25,6 +26,7 @@ class PostArticle extends Component {
           <label>
             <span className={styles.topic}>Topic:</span>
             <input
+              required
               type="text"
               name="topic"
               value={topic}
@@ -36,6 +38,7 @@ class PostArticle extends Component {
           <label>
             <span className={styles.content}>Content:</span>
             <textarea
+              required
               className={styles.contentArea}
               name="body"
               rows="10"
@@ -44,7 +47,7 @@ class PostArticle extends Component {
               onChange={this.handleInput}
             ></textarea>
           </label>
-          <button>Post article</button>
+          <button className={styles.button}>Post article</button>
         </form>
       </div>
     );
@@ -58,7 +61,7 @@ class PostArticle extends Component {
   handleSubmit = event => {
     event.preventDefault();
     this.props.postAnArticle(this.state);
-    this.setState({ username: "", body: "", topic: "", title: "" });
+    this.setState({ body: "", topic: "", title: "" });
   };
 }
 
