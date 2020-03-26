@@ -29,8 +29,9 @@ class PostArticle extends Component {
               name="topic"
               className={styles.topicarea}
               onChange={this.handleInput}
+              defaultValue="initial"
             >
-              <option selected disabled>
+              <option value="initial" disabled>
                 Select an existing topic or create a new one...
               </option>
               {this.props.topicData.map(topic => {
@@ -41,7 +42,7 @@ class PostArticle extends Component {
           </label>
           {createNew && (
             <label>
-              New topic:
+              <span className={styles.title}>New topic:</span>
               <input
                 name="topic"
                 type="text"
