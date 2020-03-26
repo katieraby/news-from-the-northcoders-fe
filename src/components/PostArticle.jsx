@@ -2,18 +2,21 @@ import React, { Component } from "react";
 import styles from "./PostArticle.module.css";
 
 class PostArticle extends Component {
-  /*username is going to be loggedinUser*/
   state = { username: "", title: "", topic: "", body: "" };
+
   render() {
+    const { title, topic, body } = this.state;
+
     return (
       <div className={styles.formContainer}>
-        <form className={styles.form}>
+        <form className={styles.form} onSubmit={this.handleSubmit}>
           <h3>Write a new article</h3>
           <label>
             <span className={styles.title}>Title:</span>
             <input
               type="text"
               name="title"
+              value={title}
               className={styles.titlearea}
               placeholder="Title of the article here"
               onChange={this.handleInput}
@@ -24,6 +27,7 @@ class PostArticle extends Component {
             <input
               type="text"
               name="topic"
+              value={topic}
               placeholder="Topic of the article here"
               className={styles.topicarea}
               onChange={this.handleInput}
@@ -35,6 +39,7 @@ class PostArticle extends Component {
               className={styles.contentArea}
               name="body"
               rows="10"
+              value={body}
               placeholder="Write your article content in here..."
               onChange={this.handleInput}
             ></textarea>
@@ -48,6 +53,12 @@ class PostArticle extends Component {
   handleInput = event => {
     this.setState({ [event.target.name]: event.target.value });
     this.setState({ username: this.props.loggedInUser });
+  };
+
+  handleSubmit = event => {
+    event.preventDefault();
+    this.props.postAnArticle(this.state);
+    this.setState({ username: "", body: "", topic: "", title: "" });
   };
 }
 

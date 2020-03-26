@@ -11,6 +11,7 @@ class Nav extends Component {
     isLoaded: false,
     err: null
   };
+
   render() {
     const { topics, isLoaded, err } = this.state;
     return (
@@ -44,10 +45,6 @@ class Nav extends Component {
     );
   }
 
-  componentDidMount() {
-    this.getAllTopics();
-  }
-
   getAllTopics = () => {
     api
       .fetchAllTopics()
@@ -59,6 +56,10 @@ class Nav extends Component {
         this.setState({ err: err.response });
       });
   };
+
+  componentDidMount() {
+    this.getAllTopics();
+  }
 }
 
 export default Nav;

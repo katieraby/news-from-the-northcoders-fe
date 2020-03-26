@@ -51,3 +51,7 @@ export const fetchAllTopics = () => {
 export const deleteArticle = id => {
   return API.delete(`/articles/${id}`);
 };
+
+export const addAnArticle = objToPost => {
+  return API.post("/articles", objToPost);
+};

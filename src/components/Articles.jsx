@@ -32,10 +32,18 @@ class Articles extends Component {
           <h2 className={styles.h2}>all articles</h2>
         ) : null}
         <SortBar handleSort={this.handleSort} />
+
         {err === null ? null : (
           <ErrorHandling msg={err.data.msg} status={err.status} />
         )}
-        <PostArticle loggedInUser={loggedInUser} />
+
+        {loggedInUser !== null && (
+          <PostArticle
+            loggedInUser={loggedInUser}
+            postAnArticle={this.postAnArticle}
+          />
+        )}
+
         {isLoaded ? (
           <>
             <ArticleList
@@ -97,14 +105,25 @@ class Articles extends Component {
     });
   };
 
+  handleSort = sortByQuery => {
+    this.setState({ sortBy: sortByQuery, isLoaded: false });
+  };
+
+  postAnArticle = objToPost => {
+    api
+      .addAnArticle(objToPost)
+      .then(() => {
+        this.fetchAllArticles();
+      })
+      .catch(err => {
+        this.setState({ err: err.response, isLoaded: true });
+      });
+  };
+
   changePage = direction => {
     this.setState(currState => {
       return { page: currState.page + direction };
     });
-  };
-
-  handleSort = sortByQuery => {
-    this.setState({ sortBy: sortByQuery, isLoaded: false });
   };
 
   componentDidMount() {
