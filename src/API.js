@@ -19,12 +19,13 @@ export const fetchArticleById = id => {
   return API.get(`/articles/${id}`);
 };
 
-const votesBody = { inc_votes: 1 };
-export const patchArticleVote = id => {
+export const patchArticleVote = (id, inc) => {
+  const votesBody = { inc_votes: inc };
   return API.patch(`/articles/${id}`, votesBody);
 };
 
-export const patchCommentVote = id => {
+export const patchCommentVote = (id, inc) => {
+  const votesBody = { inc_votes: inc };
   return API.patch(`/comments/${id}`, votesBody);
 };
 

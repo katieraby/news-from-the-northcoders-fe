@@ -17,32 +17,34 @@ const ArticleCard = ({
 }) => {
   return (
     <div className={styles.articlesCard}>
-      <h3>
-        <Link className={styles.aTitle} to={`/articles/${article_id}`}>
-          {title}
-        </Link>
-        {loggedInUser === author ? (
-          <button
-            className={styles.button}
-            onClick={() => {
-              handleDelete(article_id);
-            }}
-          >
-            Delete Article
-          </button>
-        ) : null}
-      </h3>
-      <p className={styles.body}>{body}</p>
-      <p className={styles.details}>
-        Posted {moment(created_at).format("LLL")} in topic{" "}
-        <Link className={styles.aTopic} to={`/topics/${topic}`}>
-          {topic}
-        </Link>{" "}
-        by user{" "}
-        <Link className={styles.aTopic} to={`/${author}/articles`}>
-          {author}
-        </Link>
-      </p>
+      <span className={styles.flexContainer}>
+        <h3>
+          {loggedInUser === author ? (
+            <button
+              className={styles.button}
+              onClick={() => {
+                handleDelete(article_id);
+              }}
+            >
+              Delete Article
+            </button>
+          ) : null}
+          <Link className={styles.aTitle} to={`/articles/${article_id}`}>
+            {title}
+          </Link>
+        </h3>
+        <p className={styles.body}>{body}</p>
+        <p className={styles.details}>
+          Posted {moment(created_at).format("LLL")} in topic{" "}
+          <Link className={styles.aTopic} to={`/topics/${topic}`}>
+            {topic}
+          </Link>{" "}
+          by user{" "}
+          <Link className={styles.aTopic} to={`/${author}/articles`}>
+            {author}
+          </Link>
+        </p>
+      </span>
       <Votes
         className={styles.vote}
         votes={votes}

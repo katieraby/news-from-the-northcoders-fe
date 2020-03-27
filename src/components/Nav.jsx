@@ -14,7 +14,7 @@ class Nav extends Component {
 
   render() {
     const { topics, isLoaded, err } = this.state;
-    console.log(topics, isLoaded);
+
     return (
       <nav>
         <ul>

@@ -1,23 +1,18 @@
 .articlesCard {
   display: grid;
   grid-template-columns: 5.5fr 0.5fr;
-  grid-template-rows: 3.5em auto 2.5em;
-  grid-template-areas:
-    "title vote"
-    "content vote"
-    "details details";
+  grid-template-areas: "main vote";
   border: 2px solid var(--blue);
   background-color: white;
   padding: 20px 15px;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   width: 70%;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
 }
 
-@media screen and (max-width: 640px) {
-  .articlesCard {
-    grid-template-rows: 3.5em auto 4em;
-  }
+.flexContainer {
+  display: flex;
+  flex-direction: column;
 }
 
 h3 {
@@ -27,7 +22,7 @@ h3 {
 
 .aTitle {
   color: var(--blue);
-  grid-area: title;
+  grid-area: main;
 }
 
 .aTitle:visited {
@@ -40,10 +35,10 @@ h3 {
 }
 
 .button {
+  grid-area: main;
   display: block;
   padding: 5px 30px;
-  margin-left: 5px;
-  margin-top: 20px;
+  margin-bottom: 10px;
   border: 2px solid var(--pinkyred);
   font-family: "Imprima", sans-serif;
   background-color: #ffd4de;
@@ -61,10 +56,17 @@ h3 {
 }
 
 .body {
-  margin: 0px 0px 0px 0px;
-  grid-area: content;
+  margin: 10px 0px 0px 0px;
+  grid-area: main;
 }
 
 .details {
-  grid-area: details;
+  grid-area: main;
+  margin-bottom: 5px;
+}
+
+@media screen and (max-width: 640px) {
+  .body {
+    margin-top: 5px;
+  }
 }

@@ -22,36 +22,34 @@ class Votes extends Component {
     return (
       <div className={styles.container}>
         <IconContext.Provider value={{ color: "#06d6a0", size: "1.5em" }}>
-          <FiArrowUp />
+          <FiArrowUp
+            onClick={() => {
+              if (upvoteClicked) {
+                return;
+              }
+              this.upvoteRequest(this.props.id, 1);
+              this.setState({ upvoteClicked: true });
+            }}
+          />
           <p className={styles.p}>{this.props.votes + votesDifference}</p>
-          <FiArrowDown />
+          <FiArrowDown
+            onClick={() => {
+              if (downvoteClicked) {
+                return;
+              }
+              this.upvoteRequest(this.props.id, -1);
+              this.setState({ downvoteClicked: true });
+            }}
+          />
         </IconContext.Provider>
         {voteErr !== null && <p>'Error voting'</p>}
-        {/* <button
-          disabled={upvoteClicked}
-          onClick={() => {
-            this.upvoteRequest(this.props.id, 1);
-            this.setState({ upvoteClicked: true });
-          }}
-        >
-          upvote
-        </button>
-        <button
-          disabled={downvoteClicked}
-          onClick={() => {
-            this.upvoteRequest(this.props.id, -1);
-            this.setState({ downvoteClicked: true });
-          }}
-        >
-          downvote
-        </button> */}
       </div>
     );
   }
 
   upvoteRequest = (id, difference) => {
     if (this.props.article === true) {
-      api.patchArticleVote(id).catch(err => {
+      api.patchArticleVote(id, difference).catch(err => {
         this.setState(prevState => {
           return {
             votesDifference: prevState.votesDifference - 1,
@@ -68,7 +66,7 @@ class Votes extends Component {
     }
 
     if (this.props.comment === true) {
-      api.patchCommentVote(id).catch(err => {
+      api.patchCommentVote(id, difference).catch(err => {
         this.setState(prevState => {
           return {
             votesDifference: prevState.votesDifference - 1,
