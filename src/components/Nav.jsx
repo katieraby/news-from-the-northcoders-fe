@@ -60,6 +60,12 @@ class Nav extends Component {
   componentDidMount() {
     this.getAllTopics();
   }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.newTopic !== this.state.newTopic) {
+      this.getAllTopics();
+    }
+  }
 }
 
 export default Nav;

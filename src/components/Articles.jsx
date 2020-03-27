@@ -27,7 +27,7 @@ class Articles extends Component {
       err,
       topicData
     } = this.state;
-    const { loggedInUser } = this.props;
+    const { loggedInUser, newTopicToNav } = this.props;
     return (
       <div className={styles.articles}>
         {this.props.topic ? (
@@ -47,9 +47,11 @@ class Articles extends Component {
 
         {loggedInUser !== null && (
           <PostArticle
+            newTopicToNav={newTopicToNav}
             loggedInUser={loggedInUser}
             postAnArticle={this.postAnArticle}
             topicData={topicData}
+            newTopicAdded={this.newTopicAdded}
           />
         )}
 
@@ -138,6 +140,10 @@ class Articles extends Component {
       .catch(err => {
         this.setState({ err: err.response, isLoaded: true });
       });
+  };
+
+  newTopicAdded = () => {
+    this.fetchTopics();
   };
 
   changePage = direction => {

@@ -5,8 +5,8 @@ class PostArticle extends Component {
   state = { username: "", title: "", topic: "", body: "", createNew: false };
 
   render() {
-    const { title, topic, body, createNew } = this.state;
-    console.log(topic);
+    const { title, body, createNew } = this.state;
+
     return (
       <div className={styles.formContainer}>
         <form className={styles.form} onSubmit={this.handleSubmit}>
@@ -88,6 +88,8 @@ class PostArticle extends Component {
     event.preventDefault();
     this.props.postAnArticle({ username, body, topic, title });
     this.setState({ body: "", topic: "", title: "" });
+    this.props.newTopicToNav();
+    this.props.newTopicAdded();
   };
 }
 
