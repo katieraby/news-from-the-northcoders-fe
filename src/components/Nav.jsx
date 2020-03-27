@@ -14,6 +14,7 @@ class Nav extends Component {
 
   render() {
     const { topics, isLoaded, err } = this.state;
+    console.log(topics, isLoaded);
     return (
       <nav>
         <ul>
@@ -62,7 +63,7 @@ class Nav extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (prevProps.newTopic !== this.state.newTopic) {
+    if (prevProps.newTopic !== this.props.newTopic) {
       this.getAllTopics();
     }
   }

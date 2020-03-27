@@ -23,6 +23,7 @@ const ArticleCard = ({
         </Link>
         {loggedInUser === author ? (
           <button
+            className={styles.button}
             onClick={() => {
               handleDelete(article_id);
             }}
@@ -31,8 +32,8 @@ const ArticleCard = ({
           </button>
         ) : null}
       </h3>
-      <p>{body}</p>
-      <p>
+      <p className={styles.body}>{body}</p>
+      <p className={styles.details}>
         Posted {moment(created_at).format("LLL")} in topic{" "}
         <Link className={styles.aTopic} to={`/topics/${topic}`}>
           {topic}
@@ -42,7 +43,12 @@ const ArticleCard = ({
           {author}
         </Link>
       </p>
-      <Votes votes={votes} id={article_id} article={true} />
+      <Votes
+        className={styles.vote}
+        votes={votes}
+        id={article_id}
+        article={true}
+      />
     </div>
   );
 };

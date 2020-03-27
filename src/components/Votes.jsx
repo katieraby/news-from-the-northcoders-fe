@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import * as api from "../API";
+import { FiArrowUp, FiArrowDown } from "react-icons/fi";
+import { IconContext } from "react-icons";
+import styles from "./Votes.module.css";
 
 class Votes extends Component {
   state = {
@@ -17,10 +20,14 @@ class Votes extends Component {
     } = this.state;
 
     return (
-      <div>
-        <h4>votes: {this.props.votes + votesDifference}</h4>
+      <div className={styles.container}>
+        <IconContext.Provider value={{ color: "#06d6a0", size: "1.5em" }}>
+          <FiArrowUp />
+          <p className={styles.p}>{this.props.votes + votesDifference}</p>
+          <FiArrowDown />
+        </IconContext.Provider>
         {voteErr !== null && <p>'Error voting'</p>}
-        <button
+        {/* <button
           disabled={upvoteClicked}
           onClick={() => {
             this.upvoteRequest(this.props.id, 1);
@@ -37,7 +44,7 @@ class Votes extends Component {
           }}
         >
           downvote
-        </button>
+        </button> */}
       </div>
     );
   }

@@ -1,4 +1,11 @@
 .articlesCard {
+  display: grid;
+  grid-template-columns: 5.5fr 0.5fr;
+  grid-template-rows: 3.5em auto 2.5em;
+  grid-template-areas:
+    "title vote"
+    "content vote"
+    "details details";
   border: 2px solid var(--blue);
   background-color: white;
   padding: 20px 15px;
@@ -7,12 +14,20 @@
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
 }
 
+@media screen and (max-width: 640px) {
+  .articlesCard {
+    grid-template-rows: 3.5em auto 4em;
+  }
+}
+
 h3 {
   margin-top: 5px;
+  margin-bottom: 0px;
 }
 
 .aTitle {
   color: var(--blue);
+  grid-area: title;
 }
 
 .aTitle:visited {
@@ -22,4 +37,34 @@ h3 {
 
 .aTopic {
   color: var(--orange-yellow);
+}
+
+.button {
+  display: block;
+  padding: 5px 30px;
+  margin-left: 5px;
+  margin-top: 20px;
+  border: 2px solid var(--pinkyred);
+  font-family: "Imprima", sans-serif;
+  background-color: #ffd4de;
+  color: #f22e5b;
+  cursor: pointer;
+}
+
+.button:hover {
+  opacity: 0.7;
+}
+
+.vote {
+  margin-top: 10px;
+  grid-area: vote;
+}
+
+.body {
+  margin: 0px 0px 0px 0px;
+  grid-area: content;
+}
+
+.details {
+  grid-area: details;
 }
