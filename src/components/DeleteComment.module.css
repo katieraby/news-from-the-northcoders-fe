@@ -1,0 +1,14 @@
+.button {
+  display: block;
+  padding: 5px 30px;
+  margin-bottom: 10px;
+  border: 2px solid var(--pinkyred);
+  font-family: "Imprima", sans-serif;
+  background-color: #ffd4de;
+  color: #f22e5b;
+  cursor: pointer;
+}
+
+.button:hover {
+  opacity: 0.7;
+}

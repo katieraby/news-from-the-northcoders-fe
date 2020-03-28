@@ -21,13 +21,17 @@ class CommentList extends Component {
 
     return (
       <main className={styles.listContainer}>
-        <h3>Comments</h3>
+        <h3>Comments ({comment_count})</h3>
         {err !== null ? (
           <ErrorHandling msg={err.msg} status={err.status} />
         ) : null}
         {isLoaded ? (
           <>
-            <p>{comment_count} comments</p>
+            {loggedInUser === null && (
+              <div className={styles.logInToPost}>
+                You must be logged in to post an comment
+              </div>
+            )}
             {loggedInUser !== null ? (
               <PostComment
                 loggedInUser={loggedInUser}

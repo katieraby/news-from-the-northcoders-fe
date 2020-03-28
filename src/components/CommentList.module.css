@@ -27,3 +27,14 @@
   display: flex;
   justify-content: center;
 }
+
+.logInToPost {
+  text-align: center;
+  padding: 20px 18px;
+  border: 2px solid var(--green);
+  background-color: white;
+  margin-bottom: 20px;
+  margin-top: 10px;
+  color: var(--blue);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+}

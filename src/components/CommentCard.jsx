@@ -16,7 +16,7 @@ class CommentCard extends Component {
     } = this.props;
 
     return (
-      <div>
+      <div className={styles.commentContainer}>
         <p className={styles.commentHeader}>
           Posted by {author} on {moment(created_at).format("LLL")}
         </p>
@@ -26,8 +26,12 @@ class CommentCard extends Component {
             handleDelete={this.props.handleDelete}
           />
         ) : null}
-        <p className={styles.commentBody}>{body}</p>
-        <Votes votes={votes} id={comment_id} comment={true} />
+        <span className={styles.mainContainer}>
+          <p className={styles.commentBody}>{body}</p>
+          <span className={styles.votes}>
+            <Votes votes={votes} id={comment_id} comment={true} />
+          </span>
+        </span>
       </div>
     );
   }

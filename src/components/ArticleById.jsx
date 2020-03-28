@@ -48,18 +48,25 @@ class ArticleById extends Component {
             <h2>{topic}</h2>
             <div className={styles.articleContainer}>
               <main className={styles.article}>
-                <h3>{title}</h3>
-                <p>
-                  Posted in <Link to={`/topics/${topic}`}>{topic}</Link> on{" "}
-                  {moment(created_at).format("LLL")} by {author}
-                </p>
-                <p>{body}</p>
-                <Votes votes={votes} id={article_id} article={true} />
-                <CommentList
-                  article_id={article_id}
-                  comment_count={comment_count}
-                  loggedInUser={this.props.loggedInUser}
-                />
+                <span className={styles.articleFlex}>
+                  <h3 className={styles.title}>{title}</h3>
+                  <p className={styles.details}>
+                    Posted in <Link to={`/topics/${topic}`}>{topic}</Link> on{" "}
+                    {moment(created_at).format("LLL")} by{" "}
+                    <Link to={`/${author}/articles`}>{author}</Link>
+                  </p>
+                  <p className={styles.main}>{body}</p>
+                </span>
+                <span className={styles.vote}>
+                  <Votes votes={votes} id={article_id} article={true} />
+                </span>
+                <span className={styles.comments}>
+                  <CommentList
+                    article_id={article_id}
+                    comment_count={comment_count}
+                    loggedInUser={this.props.loggedInUser}
+                  />
+                </span>
               </main>
             </div>
           </>
