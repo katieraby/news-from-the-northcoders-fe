@@ -26,4 +26,8 @@
   .button {
     padding: 15px;
   }
+
+  .inputText {
+    width: 60%;
+  }
 }
