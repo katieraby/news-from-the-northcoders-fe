@@ -23,6 +23,7 @@ class Votes extends Component {
       <div className={styles.container}>
         <IconContext.Provider value={{ color: "#06d6a0", size: "1.5em" }}>
           <FiArrowUp
+            className={upvoteClicked && "disabled"}
             onClick={() => {
               if (upvoteClicked) {
                 return;
@@ -33,6 +34,7 @@ class Votes extends Component {
           />
           <p className={styles.p}>{this.props.votes + votesDifference}</p>
           <FiArrowDown
+            className={downvoteClicked && "disabled"}
             onClick={() => {
               if (downvoteClicked) {
                 return;
