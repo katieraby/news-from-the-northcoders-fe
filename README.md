@@ -1,6 +1,8 @@
 # News From The Northcoders Front-End &nbsp; :newspaper: :newspaper_roll:
 
-Welcome to News From The Northcoders - a Reddit-style news React app, which allows you to see all of the Northcoder news by topic. You can sort articles by 'newest', 'most popular', and hottest. Users have the ability to post a new article, and in doing so, create a new topic. Clicking on an article title allows you to view that particular article in more detail with associated comments. Here, when logged in, you can post a comment. Users can also delete the articles or comments that they have posted.
+Welcome to News From The Northcoders - a Reddit-style news React app, which allows you to see all of the Northcoder news articles by topic. 
+
+You can sort articles by 'newest', 'most popular', and hottest. Users have the ability to post a new article, and in doing so, create a new topic. Clicking on an article title allows you to view that particular article in more detail with associated comments. Here, when logged in, you can post a comment. Users can also delete the articles or comments that they have posted.
 
 Each of the articles and comments can be up or down voted, only once per user per up or down vote. The app also has pagniation allowing you to click through and view more articles and comments than available on the first pages.
 
