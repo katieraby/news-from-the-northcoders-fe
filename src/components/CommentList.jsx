@@ -29,7 +29,7 @@ class CommentList extends Component {
           <>
             {loggedInUser === null && (
               <div className={styles.logInToPost}>
-                You must be logged in to post an comment
+                You must be logged in to post a comment
               </div>
             )}
             {loggedInUser !== null ? (
